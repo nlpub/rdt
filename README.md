@@ -2,7 +2,7 @@
 RDT: Russian Distributional Thesaurus (Русский Дистрибутивный Тезаурус)
 
 
-This package let you efficiently use word graph of the [Russian Distributional Thesaurus](http://nlpub.ru/rdt).
+This package let you efficiently use word graph of the [Russian Distributional Thesaurus](http://nlpub.ru/RDT).
 
 Quickstart
 ----

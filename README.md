@@ -19,7 +19,7 @@ Quickstart
 
 3. Load the distributional thesaurus (specify path to the downloaded 'rdt.pkl' file):
  ```
- from rdt import RDT
+ from dt import RDT, DistributionalThesaurus
  rdt = RDT(dt_pkl_fpath="rdt.pkl")
  ```
  Loading takes about 5 minutes and the resulting structure occupy around 1.3 Gb of RAM. This is however more efficient than parsing the CSV file into a dict in terms of both time and memory consumption. This implementation relies on marisa trie for storing keys and on numpy array for storing similarity scores. 

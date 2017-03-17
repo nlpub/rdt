@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import marisa_trie
 import numpy as np
 from sklearn.externals import joblib
@@ -23,34 +25,6 @@ SIMS = "sims"
 VERBOSE = False
 RDT_FPATH = "rdt.pkl"
 RDT_URL = "http://panchenko.me/data/russe/rdt.pkl"
-
-class RDT:
-    """ Represents Russian Distributional Thesaurus (RDT). """
-    
-    def __init__(self, dt_pkl_fpath=RDT_FPATH):
-        
-        if not exists(dt_pkl_fpath):
-            print "Downloading RDT: please wait, it can take several minutes..."
-            rdt_file = urllib.URLopener()
-            rdt_file.retrieve(RDT_URL, RDT_FPATH)
-            if exists(RDT_FPATH): 
-                print "Downloaded RDT file to:", RDT_FPATH
-            else: 
-                print "Download error: try again later or provide a valid RDT file."
-                return
-            
-        self.dt = pickle.load(open(dt_pkl_fpath, "rb"))
-        
-        print "Testing the loaded model:"
-        for w,s in self.dt.most_similar(u"граф", top_n=5): print w,s
-
-    def most_similar(self, word, top_n=20):
-        """ Get most similar terms of a word from the distributional thesaurus. """
-        
-        return self.dt.most_similar(word, top_n)
-    
-    def save(dt_fpath):
-        pickle.dump(dt, open(dt_fpath, "wb"))
 
         
 class DistributionalThesaurus:
@@ -169,3 +143,33 @@ class DistributionalThesaurus:
         res = [(pair.split(SEP)[-1], -sim) for sim, pair in res]
         return res[:top_n]
     
+
+class RDT:
+    """ Represents Russian Distributional Thesaurus (RDT). """
+    
+    def __init__(self, dt_pkl_fpath=RDT_FPATH):
+        
+        if not exists(dt_pkl_fpath):
+            print "Downloading RDT: please wait, it can take several minutes..."
+            rdt_file = urllib.URLopener()
+            rdt_file.retrieve(RDT_URL, RDT_FPATH)
+            if exists(RDT_FPATH): 
+                print "Downloaded RDT file to:", RDT_FPATH
+            else: 
+                print "Download error: try again later or provide a valid RDT file."
+                return
+            
+        self.dt = pickle.load(open(dt_pkl_fpath, "rb"))
+        
+        print "Testing the loaded model:"
+        for w,s in self.dt.most_similar(u"граф", top_n=5): print w,s
+
+    def most_similar(self, word, top_n=20):
+        """ Get most similar terms of a word from the distributional thesaurus. """
+        
+        return self.dt.most_similar(word, top_n)
+    
+    def save(dt_fpath):
+        pickle.dump(dt, open(dt_fpath, "wb"))
+
+

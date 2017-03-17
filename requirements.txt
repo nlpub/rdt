@@ -1,0 +1,3 @@
+marisa_trie
+numpy
+sklearn

@@ -1,6 +1,8 @@
 # change dt_pkl_fpath to path to the rdt.pkl file, which
 # can be downloaded at http://panchenko.me/data/russe/rdt.pkl
 
+from rdt import RDT
+
 # load the distributional thesaurus
 rdt = RDT(dt_pkl_fpath="rdt.pkl")
 # test: retrieve nearest neighbours 

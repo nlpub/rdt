@@ -36,15 +36,15 @@ with gzip.open(dt_fpath) if splitext(dt_fpath)[-1] == ".gz" else codecs.open(dt_
                 rel_num += 1
                 dt[word_i][word_j] = sim_ij
         except:
-            print format_exc()
-            if VERBOSE: print "bad line:", i, line
+            print(format_exc())
+            if VERBOSE: print("bad line:", i, line)
 
-print time()-tic, "sec."
+print(time()-tic, "sec.")
 
-print "Sample entries:"
+print("Sample entries:")
 i = 0
 for w1 in dt:
     for w2 in dt[w1]:
-        print w1, w2, dt[w1][w2]
+        print(w1, w2, dt[w1][w2])
         i += 1
     if i > 1000: break
